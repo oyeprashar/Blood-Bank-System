@@ -8,7 +8,12 @@ class GrpcClientTest {
 
     @Test
     void verifyPassword() {
-        Boolean res = GrpcClient.verifyPassword("shubham", "shubham");
-        System.out.println(res);
+        Boolean correctPassRes = GrpcClient.verifyPassword("8130047792","pass123");
+        Boolean wrongPassRes = GrpcClient.verifyPassword("8130047792","pass125");
+        Boolean wrongIdRes = GrpcClient.verifyPassword("8130047794","pass123");
+
+        assertEquals(true,correctPassRes);
+        assertEquals(false, wrongPassRes);
+        assertEquals(false,wrongIdRes);
     }
 }
