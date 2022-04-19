@@ -1,0 +1,3 @@
+[submodule "Blood-Bank-gRPC-Microservice"]
+	path = Blood-Bank-gRPC-Microservice
+	url = git@github.com:oyeprashar/Blood-Bank-gRPC-Microservice.git
