@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
+  <title>Blood Records</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="/css/WelcomePage.css" rel="stylesheet" type="text/css">
 </head>
@@ -24,9 +24,29 @@
                   <h4 class="mt-1 mb-5 pb-1">Blood Bank System</h4>
                 </div>
 
-                <button style="margin-top: -12px;"  onclick="window.location.href = 'find';"  type="button"  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button">Find Donor</button>
-                <br>
-                <button style="margin-top: -12px;" onclick="window.location.href = 'donate';" type="button" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button">Donate Blood</button>
+                <table class="table table-dark">
+                  <thead>
+                  <tr class="table-danger">
+                    <th> Name </th>
+                    <th> Location </th>
+                    <th> Type </th>
+                    <th> Gender </th>
+                    <th> Phone Num </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:if="${recordList.isEmpty()}">
+                    <td colspan="5"> No Blood Available </td>
+                  </tr>
+                  <tr th:each="rec : ${recordList}">
+                    <td><span th:text="${rec.name}"> Name </span></td>
+                    <td><span th:text="${rec.location}"> Location </span></td>
+                    <td><span th:text="${rec.bloodType}"> Location </span></td>
+                    <td><span th:text="${rec.gender}"> Location </span></td>
+                    <td><span th:text="${rec.phoneNumber}"> Location </span></td>
+                  </tr>
+                  </tbody>
+                </table>
 
 
               </div>

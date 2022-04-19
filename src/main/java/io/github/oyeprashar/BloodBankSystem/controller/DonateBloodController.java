@@ -1,7 +1,6 @@
 package io.github.oyeprashar.BloodBankSystem.controller;
 
 import FormHandling.RecordForm;
-import FormHandling.User;
 import io.github.oyeprashar.BloodBankSystem.grpcClient.GrpcClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

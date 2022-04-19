@@ -1,12 +1,17 @@
 package io.github.oyeprashar.BloodBankSystem.grpcClient;
 
 import farm.nurture.farm.service.proto.AddBloodRequest;
+import farm.nurture.farm.service.proto.AddUserRequest;
 import farm.nurture.farm.service.proto.BloodBankSystemServiceGrpc;
 import farm.nurture.farm.service.proto.BloodBankSystemServiceGrpc.BloodBankSystemServiceBlockingStub;
+import farm.nurture.farm.service.proto.FindBloodRequest;
+import farm.nurture.farm.service.proto.FindBloodResponseRecord;
 import farm.nurture.farm.service.proto.FindPasswordRequest;
 import farm.nurture.farm.service.proto.FindPasswordResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import java.util.List;
+import java.util.Locale;
 
 public class GrpcClient {
 
@@ -17,6 +22,9 @@ public class GrpcClient {
 
     // returns true if the password matches
     public static Boolean verifyPassword(String inputId, String inputPass){
+
+        inputId = inputId.toLowerCase();
+        inputPass = inputPass.toLowerCase();
 
         FindPasswordRequest findPasswordReq = FindPasswordRequest.newBuilder().setId(inputId).build();
         FindPasswordResponse res = bloodbankStub.executeFindPassword(findPasswordReq); //getRecords(0).getPassword();
@@ -35,6 +43,19 @@ public class GrpcClient {
             setPhoneNumber(phoneNumber).build();
 
         bloodbankStub.executeAddBlood(addBloodReq);
+    }
+
+    public static List<FindBloodResponseRecord> getBloodRecord(String location, String bloodType){
+        location = location.toLowerCase();
+        bloodType = bloodType.toLowerCase();
+        FindBloodRequest findBloodRequest = FindBloodRequest.newBuilder().setLocation(location).setBloodType(bloodType).build();
+        return bloodbankStub.executeFindBlood(findBloodRequest).getRecordsList();
+    }
+
+    public static void signup(String id, String pass){
+        id = id.toLowerCase();
+        AddUserRequest addUserRequest = AddUserRequest.newBuilder().setId(id).setPassword(pass).build();
+        bloodbankStub.executeAddUser(addUserRequest);
     }
 
 

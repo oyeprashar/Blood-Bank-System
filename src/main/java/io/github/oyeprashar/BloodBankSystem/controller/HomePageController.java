@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -26,12 +27,11 @@ public class HomePageController {
 
         Boolean isValid = GrpcClient.verifyPassword(user.getId(), user.getPassword());
 
-        System.out.println("========== INSIDE POST ========");
-
         if (Boolean.TRUE.equals(isValid)) {
             return "WelcomePage";
         } else {
-            return "Error";
+            model.addAttribute(user);
+            return "HomePage";
         }
     }
 }

@@ -2,9 +2,9 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/css/HomePage.css" rel="stylesheet" type="text/css">
+    <link href="/css/Signup.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Signup</title>
 </head>
 
 <style>
@@ -38,27 +38,22 @@
                                     <h4 class="mt-1 mb-5 pb-1">Blood Bank System</h4>
                                 </div>
 
-                                <form action="#" th:action="@{/}" th:object="${user}" method="post">
-
-                                    <h3>Please login to your account</h3>
-
-                                    <div class="form-outline mb-4">
-                                        <label for="id">
-                                        </label><input style="margin-top: -12px;" type="text" th:field="*{id}" id="id" class="form-control" placeholder="Phone number or email address" />
+<!--                                TODO : change action-->
+                                <form action="#" th:action="@{/signup}" th:object="${signupForm}" method="post">
+                                    <div class="form-group">
+                                        <label id></label>
+                                        <input type="text" class="form-control" th:field="*{id}" id="id" aria-describedby="id" placeholder="Enter your email or phone number">
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label for="password"></label>
-                                        <input  style="margin-top: -29px;" type="password" th:field="*{password}" id="password" class="form-control" placeholder= "password" />
+                                    <div class="form-group">
+                                        <label id></label>
+                                        <input type="password" class="form-control" th:field="*{password}" id="password" aria-describedby="password" placeholder="Enter your new password">
                                     </div>
 
-                                    <div class="text-center pt-1 mb-5 pb-1">
-                                        <button style="margin-top: -10px;" id="button1" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="Submit">Log-in</button>
-                                    </div>
-
+                                    <button style="margin-top: 20px;" onSubmit="return true;" type="submit" value="Reset"  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button">Submit</button>
                                 </form>
 
-                                <button style="margin-top: -50px;" id="button2" type="button"  onclick="window.location.href = 'signup';" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button" value="login">Sign-up</button>
+
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
